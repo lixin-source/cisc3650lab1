@@ -1,0 +1,63 @@
+#todoTitle {
+  text-align: center;
+  justify-content: center;
+}
+
+/* Input, Button, and UL */
+.todoBox {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+
+}
+
+/* Submit */
+.submitToDo {
+  display: inline;
+}
+
+#submit {
+  width: 80px;
+  height:30px;
+  text-align: center;
+}
+
+/* List of Todos */
+/* ul{
+    list-style: none;
+} */
+
+#list {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Individual Todo item */
+.fullToDoItem {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: 25px;
+}
+
+
+#checkbox:checked + p {
+  text-decoration: line-through;
+}
+
+/* .moreBtn:active{
+  display: block;
+} */
+
+
+  /* Hide the dropdown menu by default */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+}
+
+  /* Show the dropdown menu on hover */
+.todo-item:hover .dropdown-menu {
+  display: block;
+}

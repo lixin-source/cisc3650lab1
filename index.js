@@ -1,35 +1,44 @@
 // Event Listener for submitting todo item, receives info submitted
 var todoitem = document.getElementById('todoitem');
+var todoDueDate = document.getElementById('todoDueDate');
 var submit = document.getElementById('submit');
 var list = document.getElementById('list');
+
+// var moreBtn = document.createElement("button"); 
 
 submit.addEventListener("click", function submitted(){
 
     var displayedToDo = document.createElement("div");
     var displayed = document.createElement("p");
+    var displayDate = document.createElement("p");
     var checkBox = document.createElement("input");
-    checkBox.type = "checkbox"
-    displayedToDo.appendChild(checkBox)
-    checkBox.setAttribute("id", "checkbox");
-    // var moreBtn = document.createElement("button"); 
-    // var moreList = document.createElement("ul");
 
+    checkBox.type = "checkbox"
+    checkBox.setAttribute("id", "checkbox");
+    checkBox.addEventListener("change", taskDone);
 
     displayedToDo.classList.add("fullToDoItem");
 
-    // moreList.classList.add("moreList");
-    // moreBtn.innerText = 'More';
+    //  var moreBtn = document.createElement("button"); 
+    //  moreBtn.textContent = "More";
+    //  moreBtn.addEventListener("click", moreButton);
 
+    //Using select instead of a button
+    // var moreMenu = document.createElement("select");
+    // moreMenu.id = "moreMenu";
+    // moreMenu.innerText = 'More';
+    // const option1 = document.createElement('option');
+    // option1.value = 'delete';
+    // option1.text = 'Delete';
+    // moreMenu.add(option1);
+    // moreMenu.addEventListener('change', handleDropdownChange);
 
-    // var deleteBtn = document.createElement("button");
-    // deleteBtn.innerText = 'Delete';
-    // deleteBtn.addEventListener('click', deleteItem);
+    var deleteBtn = document.createElement("button");
+    deleteBtn.innerText = 'Delete';
+    deleteBtn.addEventListener('click', deleteItem);
 
     // var editBtn = document.createElement("button");
     // editBtn.innerText = 'Edit';
-    
-
-
     
     // displayedToDo.appendChild(buttonList)
 
@@ -39,10 +48,30 @@ submit.addEventListener("click", function submitted(){
     // displayedToDo.appendChild(moreBtn);
 
     displayed.appendChild(document.createTextNode(todoitem.value));
+    displayDate.appendChild(document.createTextNode(todoDueDate.value));
+
+    displayedToDo.appendChild(checkBox)
     displayedToDo.appendChild(displayed);
+    displayedToDo.appendChild(displayDate); 
+    // displayedToDo.appendChild(moreBtn);
+    displayedToDo.appendChild(deleteBtn);
     list.appendChild(displayedToDo);
 
 });
+
+function moreButton() {
+    var deleteBtn = document.createElement("button");
+    deleteBtn.innerText = 'Delete';
+    deleteBtn.addEventListener('click', deleteItem);
+}
+
+// delete function
+// function handleDropdownChange(event) {
+//     const parentDiv = event.parentNode;
+//     if (event.target.value === 'delete') {
+//       parentDiv.remove();
+//     }
+//   }
 
 function display(event){
     var deleteBtn = document.createElement("button");
@@ -50,9 +79,20 @@ function display(event){
     deleteBtn.addEventListener('click', deleteItem);
 }
 
+// Delete To Do
 function deleteItem(event) {
     const item = event.target.parentNode;
-    todoitem.removeChild(item);
+    item.remove();
+}
+
+function taskDone() {
+    if (this.checked) {
+        timeoutId = setTimeout(function() {
+            alert("Congratulations!");
+          }, 3000);
+    }else {
+    clearTimeout(timeoutId);
+    }
 }
 
 // var todoOptions = document.querySelector("todo-options");

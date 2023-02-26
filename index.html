@@ -11,7 +11,7 @@
     <title>To Do List</title>
   </head>
   <body>
-    <h1 id = "todoTitle">To Do List</h1>
+    <h1 id = "todoTitle">Your To Do List</h1>
 
     <!-- Optional JavaScript; choose one of the two! -->
 
@@ -20,15 +20,26 @@
 
     <!-- Add todo item to display-->
     <div class = "todoBox">
+      <p> Enter the task you need to do & the due date (if any)</p>
       <div class = "submitToDo">
         <input type="text" id = "todoitem" placeholder="Add To Do Item">
         <input type="date" id="todoDueDate" placeholder="Add Due Date">
         <button type="submit" id = "submit" value="Submit">Submit</button>
       </div>
+    </div>
         <div id = "list">
+          <!-- <h3 id = listTitle>List</h3> -->
+          <p>List of Tasks</p>
         <!-- items go in here -->
         </div>
-    </div>
+        <!-- <div id = "colorPicker">
+          <p id = colorPickerPrompt> Write the task type & select a color for it</p>
+          <input type="text" id="taskType" placeholder="Enter Type">
+          <input type="color" id="taskColor" name="favcolor" value="#adb5bd">
+          <button type="submit" id = "taskAdd" value="Submit">Add</button>
+          <div id = "taskTypeList">
+          </div>
+        </div> -->
     <script src="index.js"></script>
   </body>
 </html>

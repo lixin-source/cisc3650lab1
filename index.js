@@ -4,48 +4,86 @@ var todoDueDate = document.getElementById('todoDueDate');
 var submit = document.getElementById('submit');
 var list = document.getElementById('list');
 
+// Submit color
+
+var taskType = document.getElementById('taskType');
+var taskColor = document.getElementById('taskColor');
+var taskAdd = document.getElementById('taskAdd');
+var taskTypeList = document.getElementById('taskTypeList');
+
 // var moreBtn = document.createElement("button"); 
 
-submit.addEventListener("click", function submitted(){
+todoitem.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      submitted();
+    }
+  });
 
+todoDueDate.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') {
+        event.preventDefault();
+        submitted();
+      }
+});
+
+submit.addEventListener("click", submitted);
+
+function submitted() {
+
+    // Create actual to do part
     var displayedToDo = document.createElement("div");
     var displayed = document.createElement("p");
+    displayed.setAttribute("id", "strike-through");
+
+    // Create date
     var displayDate = document.createElement("p");
+    displayDate.setAttribute("id", "strike-through");
     var checkBox = document.createElement("input");
 
+    //Create checkbox for todo task
     checkBox.type = "checkbox"
     checkBox.setAttribute("id", "checkbox");
     checkBox.addEventListener("change", taskDone);
 
+    // Add class to full to do item
     displayedToDo.classList.add("fullToDoItem");
 
-    //  var moreBtn = document.createElement("button"); 
-    //  moreBtn.textContent = "More";
-    //  moreBtn.addEventListener("click", moreButton);
+    // Change Color
+    // var changeColorMenu = document.createElement("select");
+    // var defaultColor = document.createElement("option");
+    // defaultColor.value = '';
+    // defaultColor.text = 'Type';
+    // defaultColor.selected = true;
+    // changeColorMenu.add(defaultColor);
+    // changeColorMenu.setAttribute("id", "dropdown-type-menu");
 
-    //Using select instead of a button
-    // var moreMenu = document.createElement("select");
-    // moreMenu.id = "moreMenu";
-    // moreMenu.innerText = 'More';
-    // const option1 = document.createElement('option');
-    // option1.value = 'delete';
-    // option1.text = 'Delete';
-    // moreMenu.add(option1);
-    // moreMenu.addEventListener('change', handleDropdownChange);
+    // Copy all colors to the dropdown menu
 
+    // console.log(taskTypeList.length);
+    // for (let i = 0; i < taskTypeList.length; i++) {
+    //     const addValue = taskTypeList[i].textContent;
+    //     console.log(taskTypeList[i].textContent);
+    //     if (!optionExists(addValue)) {
+    //       const newOption = document.createElement('option');
+    //       newOption.value = addValue;
+    //       newOption.textContent = addValue;
+    //       changeColorMenu.appendChild(newOption);
+    //     }
+    //   }
+
+
+    // changeColorMenu.addEventListener('change', () => {
+    //     todoitem.style.color = changeColorMenu.value;
+    //     todoDueDate.style.color = changeColorMenu.value;
+    //   });
+
+
+    // Delete
     var deleteBtn = document.createElement("button");
     deleteBtn.innerText = 'Delete';
     deleteBtn.addEventListener('click', deleteItem);
 
-    // var editBtn = document.createElement("button");
-    // editBtn.innerText = 'Edit';
-    
-    // displayedToDo.appendChild(buttonList)
-
-    //<div class="options"><i class="uil uil-elipsis-h"></i><ul class="optionsmenu><li>Delete</li> </ul> </div>';
-
-    
-    // displayedToDo.appendChild(moreBtn);
 
     displayed.appendChild(document.createTextNode(todoitem.value));
     displayDate.appendChild(document.createTextNode(todoDueDate.value));
@@ -53,30 +91,13 @@ submit.addEventListener("click", function submitted(){
     displayedToDo.appendChild(checkBox)
     displayedToDo.appendChild(displayed);
     displayedToDo.appendChild(displayDate); 
-    // displayedToDo.appendChild(moreBtn);
+    // displayedToDo.appendChild(changeColorMenu);
     displayedToDo.appendChild(deleteBtn);
     list.appendChild(displayedToDo);
 
-});
+    todoitem.value = '';
+    todoDueDate.value = '';
 
-function moreButton() {
-    var deleteBtn = document.createElement("button");
-    deleteBtn.innerText = 'Delete';
-    deleteBtn.addEventListener('click', deleteItem);
-}
-
-// delete function
-// function handleDropdownChange(event) {
-//     const parentDiv = event.parentNode;
-//     if (event.target.value === 'delete') {
-//       parentDiv.remove();
-//     }
-//   }
-
-function display(event){
-    var deleteBtn = document.createElement("button");
-    deleteBtn.innerText = 'Delete';
-    deleteBtn.addEventListener('click', deleteItem);
 }
 
 // Delete To Do
@@ -95,24 +116,45 @@ function taskDone() {
     }
 }
 
-// var todoOptions = document.querySelector("todo-options");
 
-// todoOptions.addEventListener("change", function chooseTodo(event) {  
-//     if (event.target.value === "delete") {
-//         const todoItem = document.getElementById("todo-item");
-//         todoItem.parentNode.removeChild(todoItem);
-//       } else if (todoOption.value === "edit") {
-//         const todoText = document.getElementById("todo-text");
-//         const userInput = prompt("Enter new todo text:");
-//         todoText.innerText = userInput;
+// taskAdd.addEventListener("click", function taskAdded() {
+
+//     // Reference the drop down menus in all of them
+//     var changeColorMenu = document.querySelectorAll("#dropdown-type-menu")
+
+//     // When clicked, display the type with the color of what was selected
+//     var displayType = document.createElement('p');
+//     displayType.appendChild(document.createTextNode(taskType.value));
+//     displayType.setAttribute("class", "colorTypes")
+//     displayType.style.color = taskColor.value;
+//     taskTypeList.appendChild(displayType);
+
+//     changeColorMenu.forEach(changeColorMenu => {
+//         const newOption = document.createElement('option');
+//         // Set its text content to the text content of the p element
+//         newOption.textContent = displayType.textContent;
+//         // Append the option element to the destination select element
+//         changeColorMenu.appendChild(newOption.cloneNode(true));
+//         //Append all previously added displayTypes to all menus
+//     });
+
+//     taskType.value ='';
+//     taskColor.value = '#ffffff';
+// });
+
+
+
+// function optionExists(optionValue) {
+//     const options = taskTypeList.options;
+//     for (let i = 0; i < options.length; i++) {
+//       if (options[i].value === optionValue) {
+//         return true;
 //       }
-// });
-
-
-// document.querySelector("todo-options").addEventListener("change", function(){
-//     if (this.value == "delete") {
-//         console.log("deleted");
-//     } else {
-//         console.log("selected");
 //     }
-// });
+//     return false;
+//   }
+
+
+// function changeColor(event) {
+    
+// }    

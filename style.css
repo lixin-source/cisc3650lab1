@@ -1,6 +1,21 @@
+body {
+  background-color: #E5E5E5;
+}
+
+button {
+  border-style: solid;
+  border-color: #adb5bd;
+}
+
+input {
+  border: 1px solid #ccc;
+}
+
 #todoTitle {
   text-align: center;
   justify-content: center;
+  padding: 20px;
+  margin-top: 5%;
 }
 
 /* Input, Button, and UL */
@@ -23,14 +38,26 @@
   text-align: center;
 }
 
-/* List of Todos */
-/* ul{
-    list-style: none;
-} */
+#colorPicker {
+  margin-right: 20%;
+  margin-left: 55%;
+  margin-top: 20px;
+}
+
+#listTitle {
+  justify-content: center;
+  display: flex;
+  text-align: center;
+}
+
 
 #list {
   display: flex;
   flex-direction: column;
+  padding: 20px;
+  background-color: #e9ecef;
+  float: left;
+  margin-left: 42%; 
 }
 
 /* Individual Todo item */
@@ -39,10 +66,31 @@
   flex-direction: row;
   justify-content: center;
   height: 25px;
+  margin: 15px;
 }
 
+#checkbox {
+  margin: 5px;
+}
 
-#checkbox:checked + p {
+.fullToDoItem p {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.fullToDoItem button {
+  width: 70px;
+  height: 28px;
+  font-size: 13px;
+}
+
+.fullToDoItem p button {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0;
+}
+
+#checkbox:checked ~ #strike-through{
   text-decoration: line-through;
 }
 
@@ -51,13 +99,27 @@
 } */
 
 
-  /* Hide the dropdown menu by default */
-.dropdown-menu {
+/* #dropdown-type-menu {
   display: none;
   position: absolute;
-}
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+} */
 
-  /* Show the dropdown menu on hover */
-.todo-item:hover .dropdown-menu {
+/* #dropdown-type-menu p {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
   display: block;
 }
+
+.show {
+  display: block;
+} */
+
+
+/* #dropdown-menu a:hover {
+  background-color: #f1f1f1;
+} */
